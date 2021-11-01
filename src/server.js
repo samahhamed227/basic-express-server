@@ -9,7 +9,7 @@ const notFoundHandler = require('./error-handlers/404');
 const errorHandler = require('./error-handlers/500');
 const validatorMiddleware = require('./middleware/validator');
 const loggerMiddleware = require('./middleware/logger');
-const PORT = process.env.PORT || 3030;
+const PORT = process.env.PORT || 3000;
 
 
 app.use(express.json());
@@ -32,6 +32,13 @@ app.put('/bad', (req, res) => {
   res.status(200).send(' This is a put request!');
 });
 
+app.get ('/status',(req,res)=>{
+  res.send({
+    domain:'basic-express-serv.herokuapp.com',
+    status:'running',
+    port:'3000',
+  });
+});
 
 
 // this is a global middleware
